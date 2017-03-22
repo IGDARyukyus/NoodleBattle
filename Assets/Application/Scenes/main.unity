@@ -99,9 +99,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 11642180}
+  - component: {fileID: 11642181}
   m_Layer: 0
   m_Name: Noodles (1)
-  m_TagString: Untagged
+  m_TagString: Noodle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +126,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11642181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 11642179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd462bcf7ef0498a85e77006031fa92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &139644115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,13 +1051,13 @@ Transform:
   m_PrefabParentObject: {fileID: 400004, guid: f94cf1e8c0d2247fb85a7ef83deb6790, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 368326220}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.65647215, y: -0.26276284, z: -0.26276284, w: 0.65647215}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 99.99997, z: 99.99997}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -43.284, z: -0.34500003}
 --- !u!64 &368326224
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1210,9 +1222,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 493450838}
+  - component: {fileID: 493450839}
   m_Layer: 0
   m_Name: Noodles (4)
-  m_TagString: Untagged
+  m_TagString: Noodle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1236,6 +1249,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &493450839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 493450837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd462bcf7ef0498a85e77006031fa92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &510804374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,9 +1890,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 731241831}
+  - component: {fileID: 731241832}
   m_Layer: 0
   m_Name: Noodles (5)
-  m_TagString: Untagged
+  m_TagString: Noodle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1892,6 +1917,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &731241832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 731241830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd462bcf7ef0498a85e77006031fa92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &757366775
 GameObject:
   m_ObjectHideFlags: 0
@@ -4126,9 +4162,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1523886871}
+  - component: {fileID: 1523886872}
   m_Layer: 0
   m_Name: Noodles (3)
-  m_TagString: Untagged
+  m_TagString: Noodle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4152,6 +4189,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1523886872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523886870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd462bcf7ef0498a85e77006031fa92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1537225153
 GameObject:
   m_ObjectHideFlags: 0
@@ -4626,7 +4674,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1572297138}
   m_LocalRotation: {x: -0.035532635, y: 0.91263115, z: -0.081264235, w: -0.39904636}
-  m_LocalPosition: {x: 3.003, y: 0.663, z: 2.758}
+  m_LocalPosition: {x: 3.76, y: 0.92, z: 3.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4695,7 +4743,7 @@ HingeJoint:
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_EnablePreprocessing: 1
 --- !u!54 &1641678391
 Rigidbody:
@@ -4902,9 +4950,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1705766447}
+  - component: {fileID: 1705766448}
   m_Layer: 0
   m_Name: Noodles (6)
-  m_TagString: Untagged
+  m_TagString: Noodle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4928,6 +4977,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1705766448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1705766446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd462bcf7ef0498a85e77006031fa92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1811807296
 GameObject:
   m_ObjectHideFlags: 0
@@ -4936,9 +4996,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1811807297}
+  - component: {fileID: 1811807298}
   m_Layer: 0
   m_Name: Noodles
-  m_TagString: Untagged
+  m_TagString: Noodle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4962,6 +5023,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1811807298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1811807296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd462bcf7ef0498a85e77006031fa92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1813767509
 GameObject:
   m_ObjectHideFlags: 0
@@ -5068,9 +5140,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1840583760}
+  - component: {fileID: 1840583761}
   m_Layer: 0
   m_Name: Noodles (2)
-  m_TagString: Untagged
+  m_TagString: Noodle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5094,6 +5167,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1840583761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1840583759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd462bcf7ef0498a85e77006031fa92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1860988268
 GameObject:
   m_ObjectHideFlags: 0
