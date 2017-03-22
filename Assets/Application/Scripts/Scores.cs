@@ -18,12 +18,14 @@ public class Scores : MonoBehaviour {
 	private bool isRiftup = false;
 
 	private void Update () {
-		if (isTimer) {
-			LateTimer += Time.deltaTime;
-		}
+		if (MakeManager.instance.isPlay) {
+			if (isTimer) {
+				LateTimer += Time.deltaTime;
+			}
 
-		if (isRiftup) {
-			Water -= Time.deltaTime / DryingPercent;
+			if (isRiftup) {
+				Water -= Time.deltaTime / DryingPercent;
+			}
 		}
 	}
 

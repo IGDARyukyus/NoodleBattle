@@ -8,10 +8,12 @@ public class NoodleGenerator : MonoBehaviour {
 	public GameObject noodle;
 	[SerializeField] private float Times = 1f;
 	// Use this for initialization
+	[PunRPC]
 	IEnumerator Start () {
 		int i = 0;
 		while (i < count) {
-			Instantiate (noodle, transform.position, noodle.transform.rotation);
+			GameObject obj = Instantiate (noodle, transform.position, noodle.transform.rotation);
+			obj.AddComponent<PhotonView> ();
 			yield return new WaitForSeconds (Times);
 			i++;
 		}

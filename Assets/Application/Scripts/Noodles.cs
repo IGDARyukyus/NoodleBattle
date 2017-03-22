@@ -5,9 +5,9 @@ using UnityEngine;
 public class Noodles : MonoBehaviour {
 
 	private Rigidbody noodle;
-	[SerializeField]private bool isGround = false;
+	// [SerializeField]private bool isGround = false;
 	[SerializeField]private float Scale = 0.2f;
-	[SerializeField]private float Mass = 0.1f;
+	// [SerializeField]private float Mass = 0.1f;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +21,7 @@ public class Noodles : MonoBehaviour {
 
 	public void Settings() {
 		noodle = GetComponent<Rigidbody> ();
-		noodle.mass = Mass;
+		// noodle.mass = Mass;
 		transform.localScale = Vector3.right * Scale + Vector3.up * transform.localScale.y + Vector3.forward * Scale;
 	}
 }

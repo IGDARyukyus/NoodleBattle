@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AccelerationTest : MonoBehaviour {
 
-	[SerializeField]private float MAGUNITUDE = 2f;
-	private float Power = 200f;
+	private float MAGUNITUDE = 2f;
+	private float Power = 500f;
 	private Noodles[] noodles;
 
 	// Debug Mode.
@@ -21,14 +21,21 @@ public class AccelerationTest : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Vector3 acceleration = Input.acceleration;
-		float magnitude = acceleration.magnitude;
+		if (MakeManager.instance.isPlay) {
+			Vector3 acceleration = Input.acceleration;
+			print (acceleration);
+			float magnitude = acceleration.magnitude;
+			if (magnitude > MAGUNITUDE) {
+				if (isSwing) {
+					AddPower (acceleration);
+				} else {
+					AddFirstPower (acceleration);
+				}
+			}
 
-		if (magnitude > MAGUNITUDE) {
-			if (isSwing) {
-				AddPower (acceleration);
-			} else {
-
+			if (CheckRotate (acceleration.x)) {
+				print ("End");
+				MakeManager.instance.isPlay = false;
 			}
 		}
 	}
@@ -37,13 +44,14 @@ public class AccelerationTest : MonoBehaviour {
 		// Handheld.Vibrate ();
 		MakeManager.instance.score.AddToCount ();
 		MakeManager.instance.score.SubToWater (pow.magnitude);
-
+		print (-pow * Power);
 		for (int i = 0; i < noodles.Length; i++) {
-			noodles [i].AddPower (pow * Power);
+			noodles [i].AddPower (-pow * Power);
 		}
 	}
 
 	void AddFirstPower (Vector3 pow) {
+		isSwing = true;
 		MakeManager.instance.score.AddToCount ();
 		MakeManager.instance.score.SubToWater (pow.magnitude);
 
@@ -53,5 +61,11 @@ public class AccelerationTest : MonoBehaviour {
 
 		float t = MakeManager.instance.score.StopTimer ();
 		print (t);
+	}
+
+	private bool CheckRotate (float dx) {
+		if (dx > 0.8f)
+			return true;
+		return false;
 	}
 }

@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class MakeManager : MonoBehaviour {
 
 	public static MakeManager instance;
+	public bool isPlay = false;
 
 	[HideInInspector]public Scores score;
 	public Text text;
 	public Image water_percent_gage;
 
-	private string[] texts = { "Ready...", "Go！湯切れ！"};
+	private string[] texts = {"マッチング中" ,"Ready...", "Go！"};
 	private int text_number = 0;
 
 	private void Awake () {
@@ -21,10 +22,16 @@ public class MakeManager : MonoBehaviour {
 	}
 
 	// ランダムで○秒後に振動を与える
+	[PunRPC]
 	private IEnumerator Start () {
+		while (!isMatchingRoom ()) {
+			yield return null;
+		}
+		AddOneToNumber (text_number);
 		float ran = Random.Range (5f, 20f);
 		yield return new WaitForSeconds (ran);
-		text_number++;
+		AddOneToNumber (text_number);
+		isPlay = true;
 		Handheld.Vibrate ();
 		score.StartTimer ();
 	}
@@ -40,5 +47,17 @@ public class MakeManager : MonoBehaviour {
 
 	private void ChangePercent () {
 		water_percent_gage.fillAmount = score.getPercentageOfWater ();
+	}
+
+	private bool isMatchingRoom () {
+		if (PhotonNetwork.room.PlayerCount == 2) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private void AddOneToNumber (int n) {
+		n = n + 1;
 	}
 }
