@@ -8,7 +8,6 @@ public class NoodleGenerator : MonoBehaviour {
 	public GameObject noodle;
 	[SerializeField] private float Times = 1f;
 	// Use this for initialization
-	[PunRPC]
 	IEnumerator Start () {
 		int i = 0;
 		while (i < count) {
