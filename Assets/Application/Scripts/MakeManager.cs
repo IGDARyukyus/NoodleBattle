@@ -50,6 +50,13 @@ public class MakeManager : MonoBehaviour {
 	}
 
 	private bool isMatchingRoom () {
+
+		print("RoomName : " + PhotonNetwork.room.Name);
+		print ("User count : " + PhotonNetwork.room.PlayerCount);
+		foreach (string name in PhotonNetwork.room.ExpectedUsers) {
+			print ("Name : " + name);
+		}
+
 		if (PhotonNetwork.room.PlayerCount == 2) {
 			return true;
 		} else {
