@@ -6,7 +6,7 @@ public class NoodleGenerator : MonoBehaviour {
 
 	private int count = 10;
 	public GameObject noodle;
-	private float Times = 1f;
+	[SerializeField] private float Times = 1f;
 	// Use this for initialization
 	IEnumerator Start () {
 		int i = 0;

@@ -1,29 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MakeManager : MonoBehaviour {
 
 	public static MakeManager instance;
 
-	private readonly float BEST_WATER = 20f;
-	private readonly int BEST_COUNTER = 5;
+	[HideInInspector]public Scores score;
+	public Text text;
+	public Image water_percent_gage;
 
-	private float Water = 100f;
-	private int Counter = 0;
+	private string[] texts = { "Ready...", "Go！湯切れ！"};
+	private int text_number = 0;
 
 	private void Awake () {
 		if (instance == null)
 			instance = this;
+		score = GetComponent<Scores> ();
 	}
 
-	public void AddToCount() {
-		Counter++;
-		print ("Counter : " + Counter);
+	// ランダムで○秒後に振動を与える
+	private IEnumerator Start () {
+		float ran = Random.Range (5f, 20f);
+		yield return new WaitForSeconds (ran);
+		text_number++;
+		Handheld.Vibrate ();
+		score.StartTimer ();
 	}
 
-	public void SubToWater (float sub) {
-		Water -= sub;
-		print ("Water : " + Water);
+	private void Update () {
+		ChangeText ();
+		ChangePercent ();
+	}
+
+	private void ChangeText () {
+		text.text = texts [text_number];
+	}
+
+	private void ChangePercent () {
+		water_percent_gage.fillAmount = score.getPercentageOfWater ();
 	}
 }

@@ -8,6 +8,9 @@ public class AccelerationTest : MonoBehaviour {
 	private float Power = 200f;
 	private Noodles[] noodles;
 
+	// Debug Mode.
+	public bool isSwing = false;
+
 	private void Start () {
 		GameObject[] objs = GameObject.FindGameObjectsWithTag ("Noodle");
 		noodles = new Noodles[objs.Length];
@@ -20,19 +23,35 @@ public class AccelerationTest : MonoBehaviour {
 	void Update () {
 		Vector3 acceleration = Input.acceleration;
 		float magnitude = acceleration.magnitude;
-		print (magnitude);
+
 		if (magnitude > MAGUNITUDE) {
-			AddPower (acceleration);
+			if (isSwing) {
+				AddPower (acceleration);
+			} else {
+
+			}
 		}
 	}
 
 	void AddPower (Vector3 pow) {
-		Handheld.Vibrate ();
-		MakeManager.instance.AddToCount ();
-		MakeManager.instance.SubToWater (pow.magnitude * 5f);
+		// Handheld.Vibrate ();
+		MakeManager.instance.score.AddToCount ();
+		MakeManager.instance.score.SubToWater (pow.magnitude);
 
 		for (int i = 0; i < noodles.Length; i++) {
 			noodles [i].AddPower (pow * Power);
 		}
+	}
+
+	void AddFirstPower (Vector3 pow) {
+		MakeManager.instance.score.AddToCount ();
+		MakeManager.instance.score.SubToWater (pow.magnitude);
+
+		for (int i = 0; i < noodles.Length; i++) {
+			noodles [i].AddPower (pow * Power);
+		}
+
+		float t = MakeManager.instance.score.StopTimer ();
+		print (t);
 	}
 }
