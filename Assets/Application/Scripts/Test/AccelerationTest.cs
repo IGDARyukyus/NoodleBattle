@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AccelerationTest : MonoBehaviour {
 
-	[SerializeField]private float MAGUNITUDE = 2F;
-	private float Power = 50f;
+	[SerializeField]private float MAGUNITUDE = 2f;
+	private float Power = 200f;
 	private Noodles[] noodles;
 
 	private void Start () {
@@ -22,11 +22,15 @@ public class AccelerationTest : MonoBehaviour {
 		float magnitude = acceleration.magnitude;
 		print (magnitude);
 		if (magnitude > MAGUNITUDE) {
-			AddPower (-acceleration);
+			AddPower (acceleration);
 		}
 	}
 
 	void AddPower (Vector3 pow) {
+		Handheld.Vibrate ();
+		MakeManager.instance.AddToCount ();
+		MakeManager.instance.SubToWater (pow.magnitude * 5f);
+
 		for (int i = 0; i < noodles.Length; i++) {
 			noodles [i].AddPower (pow * Power);
 		}

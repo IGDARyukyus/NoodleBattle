@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Noodle
+  - Cup
+  - Noodle_Single
   layers:
   - Default
   - TransparentFX
