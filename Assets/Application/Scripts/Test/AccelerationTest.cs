@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class AccelerationTest : MonoBehaviour {
 
-	[SerializeField]private float MAGUNITUDE = 2F;
-	private float Power = 50f;
+	[SerializeField]private float MAGUNITUDE = 2f;
+	private float Power = 200f;
 	private Noodles[] noodles;
+
+	// Debug Mode.
+	public bool isSwing = false;
 
 	private void Start () {
 		GameObject[] objs = GameObject.FindGameObjectsWithTag ("Noodle");
@@ -20,15 +23,35 @@ public class AccelerationTest : MonoBehaviour {
 	void Update () {
 		Vector3 acceleration = Input.acceleration;
 		float magnitude = acceleration.magnitude;
-		print (magnitude);
+
 		if (magnitude > MAGUNITUDE) {
-			AddPower (-acceleration);
+			if (isSwing) {
+				AddPower (acceleration);
+			} else {
+
+			}
 		}
 	}
 
 	void AddPower (Vector3 pow) {
+		// Handheld.Vibrate ();
+		MakeManager.instance.score.AddToCount ();
+		MakeManager.instance.score.SubToWater (pow.magnitude);
+
 		for (int i = 0; i < noodles.Length; i++) {
 			noodles [i].AddPower (pow * Power);
 		}
+	}
+
+	void AddFirstPower (Vector3 pow) {
+		MakeManager.instance.score.AddToCount ();
+		MakeManager.instance.score.SubToWater (pow.magnitude);
+
+		for (int i = 0; i < noodles.Length; i++) {
+			noodles [i].AddPower (pow * Power);
+		}
+
+		float t = MakeManager.instance.score.StopTimer ();
+		print (t);
 	}
 }
