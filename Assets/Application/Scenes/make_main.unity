@@ -704,6 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373d6608b92a84353b688de6dd144e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlay: 0
   score: {fileID: 0}
   text: {fileID: 900310735}
   water_percent_gage: {fileID: 135941589}
@@ -841,6 +842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 924168150}
   - component: {fileID: 924168149}
+  - component: {fileID: 924168151}
   m_Layer: 0
   m_Name: NoodleCreate
   m_TagString: Untagged
@@ -874,6 +876,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &924168151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 924168148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 2
+  instantiationId: 2
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1 &1572297138
 GameObject:
   m_ObjectHideFlags: 0
