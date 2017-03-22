@@ -64,4 +64,17 @@ public class MakeManager : MonoBehaviour {
 	private void AddOneToNumber (int n) {
 		n = n + 1;
 	}
+
+	// ゲームを閉じた時に行う処理(Androidのバックグラウンドでは動かない)
+	private void OnApplicationQuit() {
+		PhotonNetwork.LeaveRoom ();
+	}
+
+	// AndroidやIOSの場合はこれが必要
+	void OnApplicationPause (bool pauseStatus)
+	{
+		if (pauseStatus) {
+			PhotonNetwork.LeaveRoom ();
+		}
+	}
 }
