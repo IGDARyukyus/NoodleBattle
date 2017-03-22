@@ -22,7 +22,6 @@ public class MakeManager : MonoBehaviour {
 	}
 
 	// ランダムで○秒後に振動を与える
-	[PunRPC]
 	private IEnumerator Start () {
 		while (!isMatchingRoom ()) {
 			yield return null;
@@ -32,7 +31,9 @@ public class MakeManager : MonoBehaviour {
 		yield return new WaitForSeconds (ran);
 		AddOneToNumber (text_number);
 		isPlay = true;
+		#if !UNITY_STANDALONE_WIN
 		Handheld.Vibrate ();
+		#endif
 		score.StartTimer ();
 	}
 

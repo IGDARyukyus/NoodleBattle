@@ -684,7 +684,6 @@ GameObject:
   m_Component:
   - component: {fileID: 479770881}
   - component: {fileID: 479770882}
-  - component: {fileID: 479770883}
   - component: {fileID: 479770880}
   m_Layer: 0
   m_Name: GameManager
@@ -733,32 +732,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DryingPercent: 5
---- !u!114 &479770883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 479770879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 3
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 479770881}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
 --- !u!1 &900310733
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,7 +815,6 @@ GameObject:
   m_Component:
   - component: {fileID: 924168150}
   - component: {fileID: 924168149}
-  - component: {fileID: 924168151}
   m_Layer: 0
   m_Name: NoodleCreate
   m_TagString: Untagged
@@ -876,32 +848,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &924168151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 924168148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 0
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 0}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 2
-  instantiationId: 2
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
 --- !u!1 &1572297138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +972,6 @@ GameObject:
   - component: {fileID: 1733612735}
   - component: {fileID: 1733612734}
   - component: {fileID: 1733612733}
-  - component: {fileID: 1733612736}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -1139,7 +1084,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1284274004
+  randomSeed: -1360364710
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3734,32 +3679,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1733612736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1733612732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 3
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 1733612735}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 4
-  instantiationId: 4
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
 --- !u!1 &1873368603
 GameObject:
   m_ObjectHideFlags: 0
