@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class AccelerationTest : MonoBehaviour {
 
+	public MakeManager makeManager;
 	private float MAGUNITUDE = 2f;
-	private float Power = 500f;
-	private Noodles[] noodles;
+	private float Power = 100f;
+	[SerializeField]private Noodles[] noodles;
 
 	// Debug Mode.
 	public bool isSwing = false;
 
 	private void Start () {
-		GameObject[] objs = GameObject.FindGameObjectsWithTag ("Noodle");
+		GameObject[] objs = GameObject.FindGameObjectsWithTag ("Noodle_Single");
 		noodles = new Noodles[objs.Length];
 		for (int i = 0; i < objs.Length; i++) {
 			noodles [i] = objs [i].GetComponent<Noodles> ();
@@ -21,7 +22,7 @@ public class AccelerationTest : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (MakeManager.instance.isPlay) {
+		if (makeManager.isPlay) {
 			Vector3 acceleration = Input.acceleration;
 			print (acceleration);
 			float magnitude = acceleration.magnitude;
@@ -33,17 +34,17 @@ public class AccelerationTest : MonoBehaviour {
 				}
 			}
 
-			if (CheckRotate (acceleration.x)) {
-				print ("End");
-				MakeManager.instance.isPlay = false;
-			}
+//			if (CheckRotate (acceleration.x)) {
+//				print ("End");
+//				makeManager.isPlay = false;
+//			}
 		}
 	}
 
 	void AddPower (Vector3 pow) {
 		// Handheld.Vibrate ();
-		MakeManager.instance.score.AddToCount ();
-		MakeManager.instance.score.SubToWater (pow.magnitude);
+		makeManager.score.AddToCount ();
+		makeManager.score.SubToWater (pow.magnitude);
 		print (-pow * Power);
 		for (int i = 0; i < noodles.Length; i++) {
 			noodles [i].AddPower (-pow * Power);
@@ -52,11 +53,11 @@ public class AccelerationTest : MonoBehaviour {
 
 	void AddFirstPower (Vector3 pow) {
 		isSwing = true;
-		MakeManager.instance.score.AddToCount ();
-		MakeManager.instance.score.SubToWater (pow.magnitude);
+		makeManager.score.AddToCount ();
+		makeManager.score.SubToWater (pow.magnitude);
 
 		for (int i = 0; i < noodles.Length; i++) {
-			noodles [i].AddPower (pow * Power);
+			noodles [i].AddPower (-pow * Power);
 		}
 	}
 

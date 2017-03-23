@@ -794,6 +794,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d50fbb5f59ba49b28401cc6bcec18d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  makeManager: {fileID: 479770880}
+  noodles: []
   isSwing: 0
 --- !u!1001 &209621962
 Prefab:
@@ -1730,8 +1732,9 @@ GameObject:
   m_Component:
   - component: {fileID: 479770881}
   - component: {fileID: 479770880}
+  - component: {fileID: 479770882}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: MakeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1754,7 +1757,6 @@ MonoBehaviour:
   water_percent_gage: {fileID: 135941589}
   noodleg: {fileID: 924168149}
   ShowTurnCanvas: {fileID: 423053187}
-  playtype: 1
 --- !u!4 &479770881
 Transform:
   m_ObjectHideFlags: 0
@@ -1768,6 +1770,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &479770882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 479770879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 66
+  instantiationId: 66
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1001 &546710060
 Prefab:
   m_ObjectHideFlags: 0
@@ -3940,7 +3968,7 @@ GameObject:
   - component: {fileID: 1712626367}
   - component: {fileID: 1712626366}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4272,7 +4300,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 744501933
+  randomSeed: 113521766
   InitialModule:
     serializedVersion: 3
     enabled: 1

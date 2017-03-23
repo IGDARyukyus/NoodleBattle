@@ -6,17 +6,19 @@ public class Scores : MonoBehaviour {
 //	private readonly float BEST_WATER = 20f;
 //	private readonly int BEST_COUNTER = 5;
 
-	private readonly float BASE_WATER = 500f;
+	private readonly float BASE_WATER = 100f;
 
-	private float Water = 500f;
+	private float Water = 100f;
 	private int   Counter = 0;
 	[SerializeField]private float DryingPercent = 10f;
 	private Scores myScore;
 
 	private bool isRiftup = false;
+	private MakeManager makeManager;
 
 	private void Update () {
-		if (MakeManager.instance.isPlay) {
+		makeManager = GameObject.Find ("MakeManager").GetComponent<MakeManager> ();
+		if (makeManager.isPlay) {
 
 			if (isRiftup) {
 				Water -= Time.deltaTime / DryingPercent;

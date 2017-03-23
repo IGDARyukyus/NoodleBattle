@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class MakeManager : MonoBehaviour {
 
-	public static MakeManager instance;
 	public bool isPlay = false;
 
 	[HideInInspector]public Scores score;
@@ -24,11 +23,11 @@ public class MakeManager : MonoBehaviour {
 	public Canvas ShowTurnCanvas;
 
 	private PhotonView view;
+	private PhotonView mainView;
 
 	// Game要素
 	private readonly float BASE_TIMER = 10f;
-	private float GameTimes = 0;
-
+	public static float GameTimes = 0;
 
 	public enum Type
 	{
@@ -37,20 +36,22 @@ public class MakeManager : MonoBehaviour {
 	}
 
 	private Type playtype;
-	public Type nowGameType;
+	public static Type nowGameType;
 
 
 	private void Awake () {
-		if (instance == null)
-			instance = this;
 		isOwnerCheck ();
 
+		// photonviewでゲージを共有
 		view = water_percent_gage.GetComponent<PhotonView> ();
+
+		// 先攻はCreate
 		nowGameType = Type.CREATE;
 	}
 
 	private void Update () {
 
+		// nowGameTypeが自分のTypeと同じならば動く
 		if (playtype == nowGameType) {
 			if (!isChecked) {
 				isMatchingRoom ();
@@ -66,15 +67,18 @@ public class MakeManager : MonoBehaviour {
 				}
 			} else {
 				GameTimes += Time.deltaTime;
-				print (GameTimes);
 				if (GameTimes > BASE_TIMER) {
 					isPlay = false;
-					Switch ();
+					if (playtype == Type.CREATE) {
+						mainView.RPC ("Switch", PhotonTargets.All, Type.EAT);
+					} else {
+						mainView.RPC ("Switch", PhotonTargets.All, Type.CREATE);
+					}
 				}
+				view.RPC ("ChangePercent", PhotonTargets.All, score.getPercentageOfWater());
 			}
 
 			ChangeText ();
-			view.RPC ("ChangePercent", PhotonTargets.All, score.getPercentageOfWater());
 		} else {
 			ShowTurnCanvas.enabled = true;
 		}
@@ -109,6 +113,7 @@ public class MakeManager : MonoBehaviour {
 		PhotonPlayer pp = PhotonNetwork.player;
 		if (pp.IsMasterClient) {
 			print ("あなたは先攻です。");
+			score = PhotonNetwork.Instantiate ("Score", transform.position, transform.rotation, 0).GetComponent<Scores>();
 			playtype = Type.CREATE;
 		} else {
 			print("あなたは後攻です。");
@@ -116,13 +121,11 @@ public class MakeManager : MonoBehaviour {
 		}
 	}
 
-	private void Switch() {
-		if (nowGameType == Type.CREATE) {
-			nowGameType = Type.EAT;
-		} else {
-			nowGameType = Type.CREATE;
-		}
-
+	[PunRPC]
+	private void Switch(Type type) {
+		nowGameType = type;
+		GameTimes = 0f;
 		print ("攻守交代");
+		SceneManager.LoadScene (1);
 	}
 }
