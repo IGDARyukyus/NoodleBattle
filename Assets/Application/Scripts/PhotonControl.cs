@@ -16,7 +16,7 @@ public class PhotonControl : MonoBehaviour {
 
 	public void SearchRoom () {
 		RoomOptions options = new RoomOptions ();
-		options.MaxPlayers = 2;
+		options.MaxPlayers = 4;
 		options.IsOpen = true;
 
 		if (PhotonNetwork.JoinOrCreateRoom (roomName + roomNumber.ToString (), options, TypedLobby.Default)) {
@@ -26,6 +26,11 @@ public class PhotonControl : MonoBehaviour {
 			roomNumber++;
 			SearchRoom ();
 		}
+	}
+
+	void OnJoinedLobby ()
+	{
+		Debug.Log ("PhotonManager OnJoinedLobby");
 	}
 
    void OnJoinedRoom () {

@@ -58,9 +58,6 @@ public class AccelerationTest : MonoBehaviour {
 		for (int i = 0; i < noodles.Length; i++) {
 			noodles [i].AddPower (pow * Power);
 		}
-
-		float t = MakeManager.instance.score.StopTimer ();
-		print (t);
 	}
 
 	private bool CheckRotate (float dx) {

@@ -1,7 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MakeManager : MonoBehaviour {
 
@@ -12,54 +13,81 @@ public class MakeManager : MonoBehaviour {
 	public Text text;
 	public Image water_percent_gage;
 
-	private string[] texts = {"マッチング中" ,"Ready...", "Go！"};
+	private string[] texts = {"マッチング中" , "Go！"};
 	private int text_number = 0;
+
+	private bool isfirst = false;
+	private bool isChecked = false;
+
+	public NoodleGenerator noodleg;
+
+	public Canvas ShowTurnCanvas;
+
+	private PhotonView view;
+
+	// Game要素
+	private readonly float BASE_TIMER = 20f;
+	private float GameTimes = 0;
+
+
+	public enum Type
+	{
+		CREATE,
+		EAT
+	}
+
+	public Type playtype;
 
 	private void Awake () {
 		if (instance == null)
 			instance = this;
 		score = GetComponent<Scores> ();
-	}
+		isOwnerCheck ();
 
-	// ランダムで○秒後に振動を与える
-	private IEnumerator Start () {
-		while (!isMatchingRoom ()) {
-			yield return null;
-		}
-		AddOneToNumber (text_number);
-		float ran = Random.Range (5f, 20f);
-		yield return new WaitForSeconds (ran);
-		AddOneToNumber (text_number);
-		isPlay = true;
-		#if !UNITY_STANDALONE_WIN
-		Handheld.Vibrate ();
-		#endif
-		score.StartTimer ();
+		view = water_percent_gage.GetComponent<PhotonView> ();
+
 	}
 
 	private void Update () {
-		ChangeText ();
-		ChangePercent ();
+
+		if (playtype == Type.CREATE) {
+			if (!isChecked) {
+				isMatchingRoom ();
+			}
+
+			if (!isPlay) {
+				if (isfirst) {
+					isfirst = false;
+					text_number++;
+					isPlay = true;
+					score.StartTimer ();
+					ShowTurnCanvas.enabled = false;
+				}
+			} else {
+				GameTimes += Time.deltaTime;
+				print (GameTimes);
+				if (GameTimes > BASE_TIMER) {
+					isPlay = false;
+				}
+			}
+
+			ChangeText ();
+			view.RPC ("ChangePercent", PhotonTargets.All, score.getPercentageOfWater());
+		} else {
+			ShowTurnCanvas.enabled = true;
+		}
 	}
 
 	private void ChangeText () {
 		text.text = texts [text_number];
 	}
 
-	private void ChangePercent () {
-		water_percent_gage.fillAmount = score.getPercentageOfWater ();
-	}
-
-	private bool isMatchingRoom () {
-
-		print("RoomName : " + PhotonNetwork.room.Name);
-		print ("User count : " + PhotonNetwork.room.PlayerCount);
+	private void isMatchingRoom () {
 
 		if (PhotonNetwork.room.PlayerCount == 2) {
-			return true;
-		} else {
-			return false;
-		}
+			isfirst = true;
+			isChecked = false;
+		} 
 	}
 
 	private void AddOneToNumber (int n) {
@@ -76,6 +104,17 @@ public class MakeManager : MonoBehaviour {
 	{
 		if (pauseStatus) {
 			PhotonNetwork.LeaveRoom ();
+		}
+	}
+
+	private void isOwnerCheck () {
+		PhotonPlayer pp = PhotonNetwork.player;
+		if (pp.IsMasterClient) {
+			print ("あなたは先攻です。");
+			playtype = Type.CREATE;
+		} else {
+			print("あなたは後攻です。");
+			playtype = Type.EAT;
 		}
 	}
 }

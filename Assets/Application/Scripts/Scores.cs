@@ -6,22 +6,16 @@ public class Scores : MonoBehaviour {
 //	private readonly float BEST_WATER = 20f;
 //	private readonly int BEST_COUNTER = 5;
 
-	private readonly float BASE_WATER = 100f;
+	private readonly float BASE_WATER = 500f;
 
-	private float Water = 100f;
-	private float Temp = 100f;
-	private float LateTimer = 0f;
+	private float Water = 500f;
 	private int   Counter = 0;
 	[SerializeField]private float DryingPercent = 10f;
 
-	private bool isTimer = false;
 	private bool isRiftup = false;
 
 	private void Update () {
 		if (MakeManager.instance.isPlay) {
-			if (isTimer) {
-				LateTimer += Time.deltaTime;
-			}
 
 			if (isRiftup) {
 				Water -= Time.deltaTime / DryingPercent;
@@ -30,20 +24,16 @@ public class Scores : MonoBehaviour {
 	}
 
 	public void StartTimer () {
-		isTimer = true;
 		isRiftup = true;
 	}
 
-	public float StopTimer () {
-		isTimer = false;
-		return LateTimer;
-	}
-
+	// シェイクの回数は多いほうがいい
 	public void AddToCount() {
 		Counter++;
 		print ("Counter : " + Counter);
 	}
 
+	// 油を落としきった後の残り本数
 	public void SubToWater (float sub) {
 		Water -= sub;
 		print ("Water : " + Water);
