@@ -26,7 +26,7 @@ public class MakeManager : MonoBehaviour {
 	private PhotonView view;
 
 	// Game要素
-	private readonly float BASE_TIMER = 20f;
+	private readonly float BASE_TIMER = 10f;
 	private float GameTimes = 0;
 
 
@@ -36,21 +36,22 @@ public class MakeManager : MonoBehaviour {
 		EAT
 	}
 
-	public Type playtype;
+	private Type playtype;
+	public Type nowGameType;
+
 
 	private void Awake () {
 		if (instance == null)
 			instance = this;
-		score = GetComponent<Scores> ();
 		isOwnerCheck ();
 
 		view = water_percent_gage.GetComponent<PhotonView> ();
-
+		nowGameType = Type.CREATE;
 	}
 
 	private void Update () {
 
-		if (playtype == Type.CREATE) {
+		if (playtype == nowGameType) {
 			if (!isChecked) {
 				isMatchingRoom ();
 			}
@@ -68,6 +69,7 @@ public class MakeManager : MonoBehaviour {
 				print (GameTimes);
 				if (GameTimes > BASE_TIMER) {
 					isPlay = false;
+					Switch ();
 				}
 			}
 
@@ -87,11 +89,7 @@ public class MakeManager : MonoBehaviour {
 		if (PhotonNetwork.room.PlayerCount == 2) {
 			isfirst = true;
 			isChecked = false;
-		} 
-	}
-
-	private void AddOneToNumber (int n) {
-		n = n + 1;
+		}
 	}
 
 	// ゲームを閉じた時に行う処理(Androidのバックグラウンドでは動かない)
@@ -116,5 +114,15 @@ public class MakeManager : MonoBehaviour {
 			print("あなたは後攻です。");
 			playtype = Type.EAT;
 		}
+	}
+
+	private void Switch() {
+		if (nowGameType == Type.CREATE) {
+			nowGameType = Type.EAT;
+		} else {
+			nowGameType = Type.CREATE;
+		}
+
+		print ("攻守交代");
 	}
 }

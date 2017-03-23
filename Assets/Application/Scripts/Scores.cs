@@ -11,6 +11,7 @@ public class Scores : MonoBehaviour {
 	private float Water = 500f;
 	private int   Counter = 0;
 	[SerializeField]private float DryingPercent = 10f;
+	private Scores myScore;
 
 	private bool isRiftup = false;
 

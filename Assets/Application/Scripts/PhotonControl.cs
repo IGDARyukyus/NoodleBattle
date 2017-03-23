@@ -39,7 +39,6 @@ public class PhotonControl : MonoBehaviour {
 
 	private IEnumerator LoadScene( float i_time )
 	{
-		// 一定時間経ってからシーンを読む.
 		yield return new WaitForSeconds( i_time );
 		SceneManager.LoadScene( "make_main" );
 	}
